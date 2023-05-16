@@ -27,7 +27,7 @@ def print_board(board):
         print('|' + '|'.join(row) + '|')
     print(' ' + '-'.join(['-' for i in range(COLS)]))
 
-# Manual
+# manual
 def get_player_input_manual(player):
     while True:
         try:
@@ -109,6 +109,10 @@ def get_legal_moves(board):
             legal_moves.append(column)
     return legal_moves
 
+def get_player_input_computer(board):
+    legal_moves = get_legal_moves(board)
+    return random.choice(legal_moves)
+
 # mimax 
 def get_player_input_minmax(player,agent_plays_as, board):
     if player == agent_plays_as:
@@ -135,8 +139,8 @@ def get_player_input_minmax(player,agent_plays_as, board):
 
         return best_col
     else:
-        print("Human's Turn")
-        return get_player_input_manual(player)
+        print("Computer's Turn")
+        return get_player_input_computer(board)
 
 def add_piece(board, col, piece):
     for row in range(ROWS-1, -1, -1):
